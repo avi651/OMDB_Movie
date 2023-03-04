@@ -1,0 +1,1 @@
+const blackColor = "000000";
