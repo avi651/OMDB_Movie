@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import '../models/omdb_model.dart';
+import '../../models/omdb_model.dart';
 part 'omdb_state.freezed.dart';
 
 @freezed

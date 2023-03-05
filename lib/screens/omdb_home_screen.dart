@@ -5,9 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
 import 'package:movie_omdb/widgets/omdb_list_view_widget.dart';
-import '../bloc/omdb_cubit.dart';
-import '../bloc/omdb_state.dart';
-import '../components/omdb_components.dart';
+import '../bloc/omdb_cubit/omdb_cubit.dart';
+import '../bloc/omdb_cubit/omdb_state.dart';
 import '../widgets/emdb_search_bar.dart';
 
 class OMDBHomeScreen extends StatefulWidget {
@@ -21,6 +20,7 @@ class _OMDBHomeScreenState extends State<OMDBHomeScreen> {
 
   String? searchStr = "Spiderman";
   late bool? isConnected = false;
+  bool _isGrid = false;
 
   Future<void> _checkInternetConnection() async {
     try {
@@ -52,7 +52,6 @@ class _OMDBHomeScreenState extends State<OMDBHomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    bool _isGrid = false;
     return Scaffold(
       appBar: AppBar(
         leading: Container(),
@@ -70,7 +69,7 @@ class _OMDBHomeScreenState extends State<OMDBHomeScreen> {
                 });
               },
               icon: Icon(
-                _isGrid ? Icons.list : Icons.grid_view,
+                _isGrid ? Icons.arrow_circle_up_outlined : Icons.arrow_circle_down_outlined,
                 color: Colors.white,
               ))
         ],
@@ -107,7 +106,7 @@ class _OMDBHomeScreenState extends State<OMDBHomeScreen> {
                 );
               }
               if(state is OMDBStateSuccess) {
-                return Expanded(child: OMDBListViewWidget(omdbModel: state.omdbModel)); //OMDBComponents(omdbModel: state.omdbModel);
+                return Expanded(child: OMDBListViewWidget(omdbModel: state.omdbModel, isAccending : _isGrid)); //OMDBComponents(omdbModel: state.omdbModel);
               }
               return Container();
             },

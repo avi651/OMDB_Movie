@@ -2,7 +2,8 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/route_manager.dart';
-import 'package:movie_omdb/bloc/omdb_cubit.dart';
+import 'package:movie_omdb/bloc/omdb_cubit/omdb_cubit.dart';
+import 'bloc/omdb_detail_cubit/omdb_detial_cubit.dart';
 import 'screens/omdb_splash_screen.dart';
 import 'services/omdb_services.dart';
 import 'bloc_observer/omdb_bloc_observer.dart';
@@ -31,6 +32,9 @@ class MyApp extends StatelessWidget {
         providers: [
           BlocProvider<OMDBCubit>(
             create: (context) => OMDBCubit(omdbRepository: context.read<OMDBRepository>()),
+          ),
+          BlocProvider<OMDBDetailCubit>(
+            create: (context) => OMDBDetailCubit(omdbRepository: context.read<OMDBRepository>()),
           ),
         ],
         child: GetMaterialApp(

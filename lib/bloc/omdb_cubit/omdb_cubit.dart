@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
-import '../exceptions/custom_error.dart';
-import '../repository/omdb_repository.dart';
+import '../../exceptions/custom_error.dart';
+import '../../repository/omdb_repository.dart';
 import 'omdb_state.dart';
 
 class OMDBCubit extends Cubit<OMDBState> {
