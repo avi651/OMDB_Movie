@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import '../constants/omdb_color_constants.dart';
-import '../helper/color_helper.dart';
 
 class OMDBSearchBar extends StatefulWidget {
   final void Function(String)? onChanged;
@@ -23,7 +21,9 @@ class _OMDBSearchBarState extends State<OMDBSearchBar> {
     return Padding(
       padding: const EdgeInsets.all(12.0),
       child: TextField(
-        style: const TextStyle(color: Colors.white,),
+        style: const TextStyle(
+          color: Colors.white,
+        ),
         autofocus: false,
         onChanged: widget.onChanged,
         onSubmitted: widget.onSubmitted,

@@ -6,57 +6,56 @@ import '../models/omdb_detail_model.dart';
 import '../models/omdb_model.dart';
 
 class OMDBApiServices {
-   Future<OMDBModel?> getOMDBApiServices(String? movieName) async {
-     final Uri uri = Uri(
-       scheme: 'http',
-       host: kHostApi,
-       queryParameters: {
-         'apikey' : kAPIKey,
-         's': movieName ?? "Batman",
-       }
-     );
+  Future<OMDBModel?> getOMDBApiServices(String? movieName) async {
+    final Uri uri = Uri(
+      scheme: 'http',
+      host: kHostApi,
+      queryParameters: {
+        'apikey': kAPIKey,
+        's': movieName ?? "Batman",
+      },
+    );
 
-     try {
-       final response = await http.get(uri);
-       if(response.statusCode != 200) {
-         throw Exception(httpErrorHandler(response));
-       } else {
-         final responseBody = json.decode(response.body);
-         if(responseBody.isEmpty) {
-           throw Exception('Data not found');
-         }
-         return OMDBModel.fromJson(responseBody);
-       }
-     } catch (e) {
-       throw Exception(e.toString());
-     }
-   }
+    try {
+      final response = await http.get(uri);
+      if (response.statusCode != 200) {
+        throw Exception(httpErrorHandler(response));
+      } else {
+        final responseBody = json.decode(response.body);
+        if (responseBody.isEmpty) {
+          throw Exception('Data not found');
+        }
+        return OMDBModel.fromJson(responseBody);
+      }
+    } catch (e) {
+      throw Exception(e.toString());
+    }
+  }
 
-   Future<OMDBModelDetail?> getOMDBDetailApiServices(String? movieID) async {
-     final Uri uri = Uri(
-         scheme: 'http',
-         host: kHostApi,
-         queryParameters: {
-           'apikey' : kAPIKey,
-           'type': "Movie",
-           'i': movieID,
-         }
-     );
+  Future<OMDBModelDetail?> getOMDBDetailApiServices(String? movieID) async {
+    final Uri uri = Uri(
+      scheme: 'http',
+      host: kHostApi,
+      queryParameters: {
+        'apikey': kAPIKey,
+        'type': "Movie",
+        'i': movieID,
+      },
+    );
 
-     try {
-       final response = await http.get(uri);
-       if(response.statusCode != 200) {
-         throw Exception(httpErrorHandler(response));
-       } else {
-         final responseBody = json.decode(response.body);
-         if(responseBody.isEmpty) {
-           throw Exception('Data not found');
-         }
-         return OMDBModelDetail.fromJson(responseBody);
-       }
-     } catch (e) {
-       throw Exception(e.toString());
-     }
-   }
-
+    try {
+      final response = await http.get(uri);
+      if (response.statusCode != 200) {
+        throw Exception(httpErrorHandler(response));
+      } else {
+        final responseBody = json.decode(response.body);
+        if (responseBody.isEmpty) {
+          throw Exception('Data not found');
+        }
+        return OMDBModelDetail.fromJson(responseBody);
+      }
+    } catch (e) {
+      throw Exception(e.toString());
+    }
+  }
 }
