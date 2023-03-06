@@ -27,6 +27,7 @@ class OMDBTxtWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
+      key: const Key('omdb-text-widget'),
       title ?? "",
       overflow: isOverflow ? TextOverflow.ellipsis : null,
       textScaleFactor: 1.0,

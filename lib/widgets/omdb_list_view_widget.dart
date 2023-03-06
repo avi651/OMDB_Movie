@@ -20,6 +20,7 @@ class _OMDBListViewWidgetState extends State<OMDBListViewWidget> {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
+      key: const Key('omdbListViewKey'),
       itemCount: widget.omdbModel!.search?.length ?? 0,
       itemBuilder: (context, index) {
         widget.isAccending == true

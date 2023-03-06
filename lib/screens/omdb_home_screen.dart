@@ -80,6 +80,7 @@ class _OMDBHomeScreenState extends State<OMDBHomeScreen> {
           SizedBox(
             height: 80,
             child: OMDBSearchBar(
+              key: const Key('search-text'),
               hintText: 'Search Movies...',
               onSubmitted: (searchMovies) {
                 BlocProvider.of<OMDBCubit>(context).fetchOMDBData(searchMovies);
@@ -97,7 +98,8 @@ class _OMDBHomeScreenState extends State<OMDBHomeScreen> {
                     }
                     if (state is OMDBStateLoading) {
                       return const Center(
-                        child: CupertinoActivityIndicator(),
+                        child: CupertinoActivityIndicator(
+                        ),
                       );
                     }
                     if (state is OMDBStateError) {
