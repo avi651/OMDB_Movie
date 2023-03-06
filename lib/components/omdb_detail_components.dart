@@ -1,5 +1,4 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:lottie/lottie.dart';
@@ -18,7 +17,7 @@ class OMDBDetailComponents extends StatelessWidget {
     if (omdbModelDetail?.imdbRating == 'N/A') {
      imdbRating = double.parse("0.0") ?? 0.0;
     } else {
-      imdbRating = double.parse(omdbModelDetail?.imdbRating ?? "0");
+      imdbRating = double.parse(omdbModelDetail?.imdbRating ?? "0.0");
     }
     return SingleChildScrollView(
       child: Column(

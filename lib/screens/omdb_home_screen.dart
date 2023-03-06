@@ -82,7 +82,7 @@ class _OMDBHomeScreenState extends State<OMDBHomeScreen> {
             child: OMDBSearchBar(
               hintText: 'Search Movies...',
               onSubmitted: (searchMovies) {
-                _checkInternetConnection();
+                BlocProvider.of<OMDBCubit>(context).fetchOMDBData(searchMovies);
               },
               onChanged: (searchMovies) {},
             ),
