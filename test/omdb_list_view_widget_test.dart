@@ -4,7 +4,8 @@ import 'package:flutter_test/flutter_test.dart';
 const Key omdbListViewKey = Key('omdb-list-view');
 
 void main() {
-  testWidgets('Cannot scroll a non-overflowing block', (WidgetTester tester) async {
+  testWidgets('Cannot scroll a non-overflowing block',
+      (WidgetTester tester) async {
     await tester.pumpWidget(
       Directionality(
         textDirection: TextDirection.ltr,
@@ -58,7 +59,8 @@ void main() {
 
     await tester.pump(); // redo layout
 
-    expect(tester.getCenter(find.text('Hello')), isNot(equals(middleOfContainer)));
+    expect(
+        tester.getCenter(find.text('Hello')), isNot(equals(middleOfContainer)));
 
     await gesture.up();
   });
@@ -67,7 +69,7 @@ void main() {
     int first = 0;
     int second = 0;
 
-    Widget buildBlock({ bool reverse = false }) {
+    Widget buildBlock({bool reverse = false}) {
       return Directionality(
         textDirection: TextDirection.ltr,
         child: ListView(
@@ -75,14 +77,18 @@ void main() {
           reverse: reverse,
           children: <Widget>[
             GestureDetector(
-              onTap: () { first += 1; },
+              onTap: () {
+                first += 1;
+              },
               child: Container(
                 height: 350.0, // more than half the height of the test area
                 color: const Color(0xFF00FF00),
               ),
             ),
             GestureDetector(
-              onTap: () { second += 1; },
+              onTap: () {
+                second += 1;
+              },
               child: Container(
                 height: 350.0, // more than half the height of the test area
                 color: const Color(0xFF0000FF),
@@ -119,11 +125,13 @@ void main() {
         ),
       );
     }
+
     await tester.pumpWidget(buildBlock());
     expect(controller.offset, equals(0.0));
   });
 
-  testWidgets('SliverBlockChildListDelegate.estimateMaxScrollOffset hits end', (WidgetTester tester) async {
+  testWidgets('SliverBlockChildListDelegate.estimateMaxScrollOffset hits end',
+      (WidgetTester tester) async {
     final SliverChildListDelegate delegate = SliverChildListDelegate(<Widget>[
       Container(),
       Container(),
@@ -145,7 +153,8 @@ void main() {
       ),
     );
 
-    final SliverMultiBoxAdaptorElement element = tester.element(find.byType(SliverList, skipOffstage: false));
+    final SliverMultiBoxAdaptorElement element =
+        tester.element(find.byType(SliverList, skipOffstage: false));
 
     final double maxScrollOffset = element.estimateMaxScrollOffset(
       null,
@@ -157,8 +166,8 @@ void main() {
     expect(maxScrollOffset, equals(26.0));
   });
 
-  testWidgets('Resizing a ListView child restores scroll offset', (WidgetTester tester) async {
-
+  testWidgets('Resizing a ListView child restores scroll offset',
+      (WidgetTester tester) async {
     final AnimationController controller = AnimationController(
       vsync: const TestVSync(),
       duration: const Duration(milliseconds: 200),
@@ -211,7 +220,8 @@ void main() {
     await tester.pumpWidget(buildFrame());
     expect(find.text('top'), findsOneWidget);
 
-    final ScrollPosition position = Scrollable.of(tester.element(find.text('middle'))).position;
+    final ScrollPosition position =
+        Scrollable.of(tester.element(find.text('middle')))!.position;
     expect(position.viewportDimension, 600.0);
     expect(position.pixels, 0.0);
 

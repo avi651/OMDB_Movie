@@ -2,8 +2,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 import 'package:lottie/lottie.dart';
-import 'package:movie_omdb/screens/omdb_detail_screen.dart';
 import '../models/omdb_model.dart';
+import '../screens/omdb_detail_screen.dart';
 import 'omdb_txt_widget.dart';
 
 class OMDBListViewWidget extends StatefulWidget {

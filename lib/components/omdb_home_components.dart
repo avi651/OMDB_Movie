@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:movie_omdb/widgets/omdb_list_view_widget.dart';
-
 import '../models/omdb_model.dart';
+import '../widgets/omdb_list_view_widget.dart';
 
 class OMDBHomeComponents extends StatelessWidget {
   final OMDBModel? omdbModel;

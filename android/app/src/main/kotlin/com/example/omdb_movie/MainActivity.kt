@@ -1,4 +1,4 @@
-package com.example.movie_omdb
+package com.example.omdb_movie
 
 import io.flutter.embedding.android.FlutterActivity
 

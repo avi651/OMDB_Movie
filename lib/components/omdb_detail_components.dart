@@ -10,12 +10,17 @@ class OMDBDetailComponents extends StatelessWidget {
   final String? omdbDetailMovieID;
   late double? imdbRating;
   final bool? isFav;
-  OMDBDetailComponents({super.key, required this.omdbModelDetail ,required this.omdbDetailMovieID, this.isFav, this.imdbRating});
+  OMDBDetailComponents(
+      {super.key,
+      required this.omdbModelDetail,
+      required this.omdbDetailMovieID,
+      this.isFav,
+      this.imdbRating});
 
   @override
   Widget build(BuildContext context) {
     if (omdbModelDetail?.imdbRating == 'N/A') {
-     imdbRating = double.parse("0.0") ?? 0.0;
+      imdbRating = double.parse("0.0");
     } else {
       imdbRating = double.parse(omdbModelDetail?.imdbRating ?? "0.0");
     }
@@ -42,7 +47,7 @@ class OMDBDetailComponents extends StatelessWidget {
               ),
               imageUrl: omdbModelDetail?.poster ?? "",
               placeholder: (context, url) =>
-              const Center(child: CircularProgressIndicator()),
+                  const Center(child: CircularProgressIndicator()),
               errorWidget: (context, url, error) => SizedBox(
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height / 3,
@@ -85,9 +90,7 @@ class OMDBDetailComponents extends StatelessWidget {
                     ),
                     Icon(Icons.favorite,
                         size: 30.0,
-                        color: isFav == true
-                            ? Colors.red
-                            : Colors.grey),
+                        color: isFav == true ? Colors.red : Colors.grey),
                   ],
                 ),
                 const SizedBox(

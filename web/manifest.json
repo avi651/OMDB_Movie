@@ -1,6 +1,6 @@
 {
-    "name": "movie_omdb",
-    "short_name": "movie_omdb",
+    "name": "omdb_movie",
+    "short_name": "omdb_movie",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

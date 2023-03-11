@@ -12,13 +12,16 @@ void main() {
   });
 
   test('OMDB Detail API Test', () async {
-    final interceptor = nock('http://www.omdbapi.com/?apikey=50770fd4&type=Movie').get('&i=tt0118688')
-      ..reply(
-        200,
-        'Title',
-      );
+    final interceptor =
+        nock('http://www.omdbapi.com/?apikey=50770fd4&type=Movie')
+            .get('&i=tt0118688')
+          ..reply(
+            200,
+            'Title',
+          );
 
-    final response = await http.get(Uri.parse('http://www.omdbapi.com/?apikey=50770fd4&type=Movie&i=tt0118688'));
+    final response = await http.get(Uri.parse(
+        'http://www.omdbapi.com/?apikey=50770fd4&type=Movie&i=tt0118688'));
     expect(interceptor.isDone, true);
     expect(response.statusCode, 200);
     expect(response.body, 'Title');

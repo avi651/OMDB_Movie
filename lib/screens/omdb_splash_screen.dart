@@ -1,9 +1,9 @@
 import 'package:get/route_manager.dart';
 import 'package:lottie/lottie.dart';
 import 'package:flutter/material.dart';
-import 'package:movie_omdb/screens/omdb_home_screen.dart';
 import '../constants/omdb_color_constants.dart';
 import '../helper/color_helper.dart';
+import 'omdb_home_screen.dart';
 
 class OMDBSplashScreen extends StatefulWidget {
   const OMDBSplashScreen({super.key});

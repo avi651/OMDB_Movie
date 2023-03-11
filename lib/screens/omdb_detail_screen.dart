@@ -1,14 +1,12 @@
 import 'dart:io';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/route_manager.dart';
 import 'package:lottie/lottie.dart';
-import 'package:movie_omdb/bloc/omdb_detail_cubit/omdb_detail_state.dart';
-import 'package:movie_omdb/components/omdb_detail_components.dart';
+import '../bloc/omdb_detail_cubit/omdb_detail_state.dart';
 import '../bloc/omdb_detail_cubit/omdb_detial_cubit.dart';
+import '../components/omdb_detail_components.dart';
 import '../widgets/omdb_no_internet_connection_widget.dart';
 
 class OMDBDetailScreen extends StatefulWidget {
@@ -72,30 +70,35 @@ class _OMDBDetailScreenState extends State<OMDBDetailScreen> {
             )),
       ),
       body: isConnected == true
-          ?  BlocBuilder<OMDBDetailCubit, OMDBDetailState>(
-          builder: (context, state) {
-        if (state is OMDBDetailStateInitial) {
-          return const Center(
-            child: CupertinoActivityIndicator(),
-          );
-        }
-        if (state is OMDBDetailStateLoading) {
-          return const Center(
-            child: CupertinoActivityIndicator(),
-          );
-        }
-        if (state is OMDBDetailStateError) {
-          return const Center(
-            child: Text('Error Found'),
-          );
-        }
-        if (state is OMDBDetailStateSuccess) {
-          return OMDBDetailComponents(omdbModelDetail: state.omdbDetailModel, omdbDetailMovieID: widget.omdbDetailMovieID,isFav: widget.isFav);
-        }
-        return Container();
-      }) : NoInternetConnectionWidget(
-        onPressed: _checkInternetConnection,
-      ),
+          ? BlocBuilder<OMDBDetailCubit, OMDBDetailState>(
+              builder: (context, state) {
+              if (state is OMDBDetailStateInitial) {
+                return const Center(
+                  child: CupertinoActivityIndicator(),
+                );
+              }
+              if (state is OMDBDetailStateLoading) {
+                return const Center(
+                  child: CupertinoActivityIndicator(),
+                );
+              }
+              if (state is OMDBDetailStateError) {
+                return const Center(
+                  child: Text('Error Found'),
+                );
+              }
+              if (state is OMDBDetailStateSuccess) {
+                return OMDBDetailComponents(
+                  omdbModelDetail: state.omdbDetailModel,
+                  omdbDetailMovieID: widget.omdbDetailMovieID,
+                  isFav: widget.isFav,
+                );
+              }
+              return Container();
+            })
+          : NoInternetConnectionWidget(
+              onPressed: _checkInternetConnection,
+            ),
     );
   }
 }

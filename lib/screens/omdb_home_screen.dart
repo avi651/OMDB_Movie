@@ -85,7 +85,9 @@ class _OMDBHomeScreenState extends State<OMDBHomeScreen> {
               onSubmitted: (searchMovies) {
                 BlocProvider.of<OMDBCubit>(context).fetchOMDBData(searchMovies);
               },
-              onChanged: (searchMovies) {},
+              onChanged: (searchMovies) {
+                BlocProvider.of<OMDBCubit>(context).fetchOMDBData(searchMovies);
+              },
             ),
           ),
           isConnected == true
@@ -98,8 +100,7 @@ class _OMDBHomeScreenState extends State<OMDBHomeScreen> {
                     }
                     if (state is OMDBStateLoading) {
                       return const Center(
-                        child: CupertinoActivityIndicator(
-                        ),
+                        child: CupertinoActivityIndicator(),
                       );
                     }
                     if (state is OMDBStateError) {
@@ -117,10 +118,10 @@ class _OMDBHomeScreenState extends State<OMDBHomeScreen> {
                   },
                 )
               : Center(
-                child: NoInternetConnectionWidget(
+                  child: NoInternetConnectionWidget(
                     onPressed: _checkInternetConnection,
                   ),
-              ),
+                ),
         ],
       ),
     );

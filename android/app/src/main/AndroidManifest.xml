@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.movie_omdb">
+    package="com.example.omdb_movie">
    <application
-        android:label="movie_omdb"
+        android:label="omdb_movie"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
